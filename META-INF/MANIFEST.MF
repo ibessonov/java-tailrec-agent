@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+PreMain-Class: ibessonov.tailrec.TailRecAgentPreMain
+Built-By: ibessonov
