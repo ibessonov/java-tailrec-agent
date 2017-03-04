@@ -7,7 +7,7 @@ import java.lang.instrument.Instrumentation;
  */
 public final class TailRecAgentPreMain {
 
-    public static void premain(String args, Instrumentation instrumentation) {
+    public static void premain(String args, Instrumentation instrumentation) throws ClassNotFoundException { // magic
         instrumentation.addTransformer(new TailRecClassFileTransformer());
     }
 }

@@ -21,6 +21,7 @@ class TailRecClassFileTransformer implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
                             ProtectionDomain protectionDomain, byte[] classfileBuffer) {
+        if (className == null) return null; // lambdas
 
         AtomicBoolean classWasTransformed = new AtomicBoolean(false);
 

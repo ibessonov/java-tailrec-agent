@@ -36,17 +36,20 @@ class TailRecMethodNode extends MethodNode {
     public void visitEnd() {
         boolean methodIsStatic = (super.access & ACC_STATIC) != 0;
         //noinspection PointlessBooleanExpression
-        if (false || methodIsStatic || (super.access & ACC_PRIVATE) != 0
-                  || (super.access & ACC_FINAL) != 0 || (this.classAccess & ACC_FINAL) != 0) {
+        if (super.instructions.size() != 0
+                && (false || methodIsStatic || (super.access & ACC_PRIVATE) != 0
+                          || (super.access & ACC_FINAL) != 0 || (this.classAccess & ACC_FINAL) != 0)
+            ) {
+
             Map<? super AbstractInsnNode, LabelNode> tryCatchBlocksMap = new HashMap<>();
-            //noinspection RedundantCast // cast is redundant in asm-debug-all only
+            //noinspection unchecked
             for (TryCatchBlockNode block : (List<TryCatchBlockNode>) tryCatchBlocks) {
                 tryCatchBlocksMap.put(block.start, block.end);
             }
 
             Class<?>[] paramTypes = getParameterTypes(super.desc);
             int[] offsets = new int[paramTypes.length];
-            offsets[0] = methodIsStatic ? 0 : 1;
+            if (offsets.length > 0) offsets[0] = methodIsStatic ? 0 : 1;
             for (int i = 1; i < offsets.length; i++) {
                 offsets[i] = offsets[i - 1]
                            + (paramTypes[i - 1] == long.class || paramTypes[i - 1] == double.class ? 2 : 1);
