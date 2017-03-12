@@ -20,6 +20,11 @@ class Main {
         return thisFactorial(n - 1, acc * n);
     }
 
+    private int thisNewFactorial(int n, int acc) {
+        if (n <= 1) return acc;
+        return new Main().thisNewFactorial(n - 1, acc * n);
+    }
+
     @SuppressWarnings("WeakerAccess")
     final int finalFactorial(int n, int acc) {
         if (n <= 1) return acc;
@@ -72,6 +77,7 @@ class Main {
 
         staticFactorial(50_000, 1);
         new Main().thisFactorial(50_000, 1);
+        new Main().thisNewFactorial(50_000, 1);
         new Main().finalFactorial(50_000, 1);
 
         for (int i = 0; i < 100; i++) {
