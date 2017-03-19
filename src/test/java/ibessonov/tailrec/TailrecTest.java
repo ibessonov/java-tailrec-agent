@@ -14,7 +14,7 @@ public class TailrecTest {
 
     @Test(expected = StackOverflowError.class)
     public void testVirtualFactorial() {
-        new TailrecTest().virtualFactorial(50_000, 1);
+        virtualFactorial(50_000, 1);
     }
 
 
@@ -66,7 +66,7 @@ public class TailrecTest {
 
     @Test
     public void testThisFactorial() {
-        new TailrecTest().thisFactorial(50_000, 1);
+        thisFactorial(50_000, 1);
     }
 
 
@@ -77,7 +77,7 @@ public class TailrecTest {
 
     @Test
     public void testNewThisFactorial() {
-        new TailrecTest().newThisFactorial(50_000, 1);
+        newThisFactorial(50_000, 1);
     }
 
 
@@ -89,7 +89,7 @@ public class TailrecTest {
 
     @Test
     public void testFinalFactorial() {
-        new TailrecTest().finalFactorial(50_000, 1);
+        finalFactorial(50_000, 1);
     }
 
 
